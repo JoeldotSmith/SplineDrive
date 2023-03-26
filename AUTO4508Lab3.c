@@ -2,8 +2,8 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL -500
-#define Y_GOAL -10
+#define X_GOAL 500
+#define Y_GOAL 10
 #define ANGLE_GOAL 0
 #define INTERVAL 0.005
 #define SPEED 100
@@ -13,10 +13,18 @@ int currentXposition, currentYposition, currentAngle;
 
 //Hermit spline calculation
 int P(double u, double pk, double pk1, double dpk, double dpk1){
-    //TODO
-    //Code fuction p to return a value
-    int x = 0;
-    return x;
+    double u2, u3, h1, h2, h3, h4;
+    
+    u2 = u * u;
+    u3 = u2 * u;
+
+    h1 = 2*u3-3*u2+1;
+    h2 = -2*u3 + 3*u2;
+    h3 = u3 - 2*u2 + u;
+    h4 = u3 - u2;
+
+    return pk*h1 + pk1*h2 + dpk*h3 + dpk1*h4;
+
 }
 
 
@@ -47,22 +55,16 @@ void splineDrive(int goalX, int goalY, int alpha){
     by = yDist;
 
 
-    float u2, u3, h1, h2, h3, h4, sx, sy;
+    double sx, sy;
     int sphi;
-    float lastx = 0.0;
-    float lasty = 0.0;
+    double lastx = 0.0;
+    double lasty = 0.0;
 
     for (float u = 0.0; u <= 1.0; u+=INTERVAL){
-        u2 = u * u;
-        u3 = u2 * u;
+        
 
-        h1 = 2*u3-3*u2+1;
-        h2 = -2*u3 + 3*u2;
-        h3 = u3 - 2*u2 + u;
-        h4 = u3 - u2;
-
-        sx = currentXposition*h1 + bx*h2 + Dax*h3 + Dbx*h4;
-        sy = currentYposition*h1 + by*h2 + Day*h3 + Dby*h4;
+        sx = P(u, currentXposition, bx, Dax, Dbx);
+        sy = P(u, currentYposition, by, Day, Dby);
 
 
         //printf("h1 = %f, h2 = %f, h3 = %f, h4 = %f, sx = %f, sy = %f\n", h1, h2, h3, h4, sx, sy);
