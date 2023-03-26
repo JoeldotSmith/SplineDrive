@@ -2,7 +2,7 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL 400
+#define X_GOAL -500
 #define Y_GOAL 700
 #define ANGLE_GOAL 90
 #define INTERVAL 0.01
