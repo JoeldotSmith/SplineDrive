@@ -2,9 +2,9 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL 1000
-#define Y_GOAL 0
-#define ANGLE_GOAL 0
+#define X_GOAL 0
+#define Y_GOAL 1000
+#define ANGLE_GOAL 90
 #define INTERVAL 0.01
 #define SPEED 100
 #define ANGLESPEED 20
@@ -74,7 +74,7 @@ void splineDrive(int goalX, int goalY, int alpha){
 
 
         VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
-        //printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
+        printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
 
         lastx = sx;
         lasty = sy;
