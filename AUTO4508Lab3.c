@@ -47,8 +47,8 @@ void splineDrive(int goalX, int goalY, int alpha){
     int xDist = goalX-currentXposition;
     int yDist = goalY-currentYposition;
     len = sqrt(xDist*xDist+yDist*yDist);
-    Dax = len;
-    Day = 0;
+    Dax = len * cos(currentAngle);
+    Day = len * sin(currentAngle);
     Dbx = len * cos(alpha);
     Dby = len * sin(alpha);
     ax = currentXposition;
