@@ -111,18 +111,18 @@ void Task2(){
 
     //run forever
     while(true) {
-        int nextAngle;// int dist;?
+        //int nextAngle; int dist;?
         for (int j = 0; j < i; j++){//go through each point
             VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
-            printf("x = %i, y = %i, angle = %i\n\n", currentXposition, currentYposition, currentAngle);
+            
             int x = points[j][0];
             int y = points[j][1];
             printf("GoalX = %i, GoalY = %i\n", x, y);
             //calculate movement required to get to next point
-            int nx = x-currentXposition;
-            int ny = y-currentYposition;
-            nextAngle = atan(ny/nx)-currentAngle;
-            splineDrive(x, y, nextAngle);
+            //int nx = x-currentXposition;
+            //int ny = y-currentYposition;
+            //nextAngle = atan(ny/nx)-currentAngle;
+            splineDrive(x, y, 0);
 
 
 
@@ -152,6 +152,7 @@ int main() {
         } 
         if (key == KEY2) {
             printf("\n\n        Task 2\n\n\n");
+            printf("x = %i, y = %i, angle = %i\n\n", currentXposition, currentYposition, currentAngle);
             Task2();
         }
         if (key == KEY4){
