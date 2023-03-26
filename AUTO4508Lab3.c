@@ -2,14 +2,16 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL 500
-#define Y_GOAL -500
+#define X_GOAL 298
+#define Y_GOAL 297
 #define ANGLE_GOAL 0
 #define INTERVAL 0.01
 #define SPEED 100
 #define ANGLESPEED 20
 
 int currentXposition, currentYposition, currentAngle;
+double lastx = 0.0;
+double lasty = 0.0;
 
 //Hermit spline calculation
 int P(double u, double pk, double pk1, double dpk, double dpk1){
@@ -37,30 +39,29 @@ void splineDrive(int goalX, int goalY, int alpha){
     //Get initial position
     int ax, ay, bx, by;
     VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
-    //printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
+    printf("STARTING POSITION ||||| x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
     
     float Dax, Day, Dbx, Dby, len;
 
     //Calculate Dbx
     //Calculate DBy
     //Calculate length to position
-    int xDist = goalX;
-    int yDist = goalY;
-    len = sqrt(xDist*xDist+yDist*yDist);
+    
+    len = sqrt(goalX*goalX+goalY*goalY);
     Dax = len * cos(currentAngle);
     Day = len * sin(currentAngle);
     Dbx = len * cos(alpha);
     Dby = len * sin(alpha);
-    ax = currentXposition;
-    ay = currentYposition;
-    bx = xDist;
-    by = yDist;
+    ax = 0;
+    ay = 0;
+    bx = goalX;
+    by = goalY;
+
 
 
     double sx, sy;
     int sphi;
-    double lastx = 0.0;
-    double lasty = 0.0;
+    
 
     for (float u = 0.0; u <= 1.0; u+=INTERVAL){
         
@@ -117,12 +118,13 @@ void Task2(){
             
             int x = points[j][0];
             int y = points[j][1];
-            printf("GoalX = %i, GoalY = %i\n", x, y);
+            
             //calculate movement required to get to next point
-            //int nx = x-currentXposition;
-            //int ny = y-currentYposition;
-            //nextAngle = atan(ny/nx)-currentAngle;
-            splineDrive(x, y, 0);
+            int nx = x-currentXposition;
+            int ny = y-currentYposition;
+            printf("GoalX = %i, GoalY = %i\n", nx, ny);
+            // nextAngle = atan(ny/nx)-currentAngle;
+            splineDrive(nx, ny, 0);
 
 
 
@@ -139,7 +141,7 @@ void Task2(){
 
 int main() {
     //resets robots location in simulator
-    SIMSetRobot(0, 1000, 500, 0 , -90);
+    SIMSetRobot(0, 1500, 500, 0 , -90);
 
     //Menu for task 1 and 2
     LCDMenu("Task1", "Task 2", "", "Break");
