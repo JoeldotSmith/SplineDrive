@@ -2,8 +2,8 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL 350
-#define Y_GOAL 40
+#define X_GOAL 750
+#define Y_GOAL 900
 #define ANGLE_GOAL 0
 #define INTERVAL 0.01
 #define SPEED 100
@@ -44,8 +44,8 @@ void splineDrive(int goalX, int goalY, int alpha){
     //Calculate Dbx
     //Calculate DBy
     //Calculate length to position
-    int xDist = goalX-currentXposition;
-    int yDist = goalY-currentYposition;
+    int xDist = goalX;
+    int yDist = goalY;
     len = sqrt(xDist*xDist+yDist*yDist);
     Dax = len * cos(currentAngle);
     Day = len * sin(currentAngle);
