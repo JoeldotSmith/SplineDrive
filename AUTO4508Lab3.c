@@ -35,7 +35,7 @@ void splineDrive(int goalX, int goalY, int alpha){
     //using variables from lecture notes
 
     //Get initial position
-    int bx, by;
+    int ax, ay, bx, by;
     VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
     printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
     
@@ -51,6 +51,8 @@ void splineDrive(int goalX, int goalY, int alpha){
     Day = 0;
     Dbx = len * cos(alpha);
     Dby = len * sin(alpha);
+    ax = currentXposition;
+    ay = currentYposition;
     bx = xDist;
     by = yDist;
 
@@ -63,8 +65,8 @@ void splineDrive(int goalX, int goalY, int alpha){
     for (float u = 0.0; u <= 1.0; u+=INTERVAL){
         
 
-        sx = P(u, currentXposition, bx, Dax, Dbx);
-        sy = P(u, currentYposition, by, Day, Dby);
+        sx = P(u, ax, bx, Dax, Dbx);
+        sy = P(u, ay, by, Day, Dby);
 
 
         //printf("h1 = %f, h2 = %f, h3 = %f, h4 = %f, sx = %f, sy = %f\n", h1, h2, h3, h4, sx, sy);
