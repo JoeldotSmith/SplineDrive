@@ -4,7 +4,7 @@
 
 #define X_GOAL 400
 #define Y_GOAL 700
-#define ANGLE_GOAL 0
+#define ANGLE_GOAL 90
 #define INTERVAL 0.01
 #define SPEED 100
 #define ANGLESPEED 20
