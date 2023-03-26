@@ -37,7 +37,7 @@ void splineDrive(int goalX, int goalY, int alpha){
     //Get initial position
     int ax, ay, bx, by;
     VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
-    printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
+    //printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
     
     float Dax, Day, Dbx, Dby, len;
 
@@ -87,7 +87,7 @@ void splineDrive(int goalX, int goalY, int alpha){
     // Update and log the current position at the end
     
     VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
-    printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
+    printf("x = %i, y = %i, angle = %i\n\n", currentXposition, currentYposition, currentAngle);
     
 }
 
@@ -114,7 +114,7 @@ void Task2(){
         int nextAngle;// int dist;?
         for (int j = 0; j < i; j++){//go through each point
             VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
-            printf("x = %i, y = %i, angle = %i\n", currentXposition, currentYposition, currentAngle);
+            printf("x = %i, y = %i, angle = %i\n\n", currentXposition, currentYposition, currentAngle);
             int x = points[j][0];
             int y = points[j][1];
             printf("GoalX = %i, GoalY = %i\n", x, y);
