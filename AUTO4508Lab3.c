@@ -115,8 +115,8 @@ void Task2(){
         for (int j = 0; j < i; j++){//go through each point
             VWGetPosition(&currentXposition, &currentYposition, &currentAngle);
             
-            int x = (10/16)*points[j][0];
-            int y = (10/16)*points[j][1];
+            int x = points[j][0];
+            int y = points[j][1];
             printf("GoalX = %i, GoalY = %i\n", x, y);
             //calculate movement required to get to next point
             //int nx = x-currentXposition;
