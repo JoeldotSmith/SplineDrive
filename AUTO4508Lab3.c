@@ -72,7 +72,7 @@ void splineDrive(int goalX, int goalY, int alpha){
         double yDif = sy-lasty;
         double xDif = sx-lastx;
         sphi = round(atan2(yDif, xDif)*180/M_PI);
-        VWCurve(sqrt(yDif*yDif+xDif*xDif), sphi-currentAngle, SPEED);
+        VWCurve(len*INTERVAL, sphi-currentAngle, SPEED);
         VWWait();
 
 
