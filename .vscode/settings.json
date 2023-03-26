@@ -34,5 +34,8 @@
     "**/.vscode/**"
   ],
   "C_Cpp_Runner.useAddressSanitizer": false,
-  "gitdoc.enabled": false
+  "gitdoc.enabled": false,
+  "files.associations": {
+    "stdio.h": "c"
+  }
 }
