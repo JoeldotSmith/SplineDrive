@@ -122,7 +122,7 @@ void Task2(){
             int nx = x-currentXposition;
             int ny = y-currentYposition;
             nextAngle = atan(ny/nx)-currentAngle;
-            splineDrive(nx, ny, nextAngle);
+            splineDrive(x, y, nextAngle);
 
 
 
