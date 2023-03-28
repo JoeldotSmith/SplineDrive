@@ -18,7 +18,7 @@ int P(double u, double pk, double pk1, double dpk, double dpk1){
     double u2, u3, h1, h2, h3, h4;
     int modif;
 
-    modif = pk1/abs(pk1);
+    modif = pk1/fabs(pk1);
     
     u2 = u * u;
     u3 = u2 * u;
