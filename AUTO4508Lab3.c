@@ -2,8 +2,8 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL 298
-#define Y_GOAL 297
+#define X_GOAL 300
+#define Y_GOAL 300
 #define ANGLE_GOAL 0
 #define INTERVAL 0.01
 #define SPEED 100
@@ -144,7 +144,7 @@ void Task2(){
 
 int main() {
     //resets robots location in simulator
-    SIMSetRobot(0, 1500, 500, 0 , -90);
+    SIMSetRobot(0, 1000, 1000, 0 , -90);
 
     //Menu for task 1 and 2
     LCDMenu("Task1", "Task 2", "", "Break");
