@@ -141,7 +141,7 @@ void Task2(){
 
 int main() {
     //resets robots location in simulator
-    SIMSetRobot(0, 1500, 500, 0 , -90);
+    SIMSetRobot(0, 2500, 500, 0 , -90);
     //Menu for task 1 and 2
     LCDMenu("Task1", "Task 2", "", "Break");
     while (1){
