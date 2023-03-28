@@ -1,5 +1,6 @@
 #include "eyebot.h"
 #include "math.h"
+#include <dos.h>
 #include <stdio.h>
 
 #define X_GOAL 400
