@@ -16,6 +16,9 @@ double lasty = 0.0;
 //Hermit spline calculation
 int P(double u, double pk, double pk1, double dpk, double dpk1){
     double u2, u3, h1, h2, h3, h4;
+    int modif;
+
+    modif = pk1/abs(pk1);
     
     u2 = u * u;
     u3 = u2 * u;
@@ -25,7 +28,7 @@ int P(double u, double pk, double pk1, double dpk, double dpk1){
     h3 = u3 - 2*u2 + u;
     h4 = u3 - u2;
 
-    return pk*h1 + pk1*h2 + dpk*h3 + dpk1*h4;
+    return modif*(pk*h1 + pk1*h2 + dpk*h3 + dpk1*h4);
 
 }
 
@@ -122,7 +125,7 @@ void Task2(){
             //calculate movement required to get to next point
             int nx = x-currentXposition;
             int ny = y-currentYposition;
-            printf("GoalX = %i, GoalY = %i\n", nx, ny);
+            printf("GoalX = %i, GoalY = %i\n", x, y);
             // nextAngle = atan(ny/nx)-currentAngle;
             splineDrive(nx, ny, 0);
 
