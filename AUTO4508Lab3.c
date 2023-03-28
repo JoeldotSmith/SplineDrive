@@ -1,3 +1,6 @@
+// SCORE = 9.5/10
+
+
 #include "eyebot.h"
 #include "math.h"
 #include <stdio.h>
