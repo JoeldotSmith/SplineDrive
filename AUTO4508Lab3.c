@@ -141,7 +141,7 @@ void Task2(){
 
 int main() {
     //resets robots location in simulator
-    
+    int wait = 2000;
 
     //Menu for task 1 and 2
     LCDMenu("Task1", "Task 2", "", "Break");
@@ -150,12 +150,14 @@ int main() {
         if (key == KEY1){
             SIMSetRobot(0, 1000, 1000, 0 , -90);
             printf("\n\n        Task 1\n\n\n");
+            wait(wait);
             splineDrive(X_GOAL, Y_GOAL, ANGLE_GOAL);
             break;
         } 
         if (key == KEY2) {
             SIMSetRobot(0, 1500, 500, 0 , -90);
             printf("\n\n        Task 2\n\n\n");
+            wait(wait);
             printf("x = %i, y = %i, angle = %i\n\n", currentXposition, currentYposition, currentAngle);
             Task2();
         }
