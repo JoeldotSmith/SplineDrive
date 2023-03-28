@@ -2,8 +2,8 @@
 #include "math.h"
 #include <stdio.h>
 
-#define X_GOAL -400
-#define Y_GOAL -700
+#define X_GOAL 400
+#define Y_GOAL 700
 #define ANGLE_GOAL 0
 #define INTERVAL 0.01
 #define SPEED 100
@@ -64,16 +64,15 @@ void splineDrive(int goalX, int goalY, int alpha){
     
 
     for (float u = 0.0; u <= 1.0; u+=INTERVAL){
-        int modifx = bx/abs(bx);
-        int modify = by/abs(by);
+        
         sx = P(u, ax, bx, Dax, Dbx);
         sy = P(u, ay, by, Day, Dby);
 
 
         //printf("h1 = %f, h2 = %f, h3 = %f, h4 = %f, sx = %f, sy = %f\n", h1, h2, h3, h4, sx, sy);
         
-        double yDif = modifx*(sy-lasty);
-        double xDif = modify*(sx-lastx);
+        double yDif = (sy-lasty);
+        double xDif = (sx-lastx);
         
         sphi = round(atan2(yDif, xDif)*180/M_PI);
         VWCurve(len*INTERVAL, sphi-currentAngle, SPEED);
