@@ -16,9 +16,6 @@ double lasty = 0.0;
 //Hermit spline calculation
 int P(double u, double pk, double pk1, double dpk, double dpk1){
     double u2, u3, h1, h2, h3, h4;
-    int modif;
-
-    modif = pk1/fabs(pk1);
     
     u2 = u * u;
     u3 = u2 * u;
@@ -28,7 +25,7 @@ int P(double u, double pk, double pk1, double dpk, double dpk1){
     h3 = u3 - 2*u2 + u;
     h4 = u3 - u2;
 
-    return modif*(pk*h1 + pk1*h2 + dpk*h3 + dpk1*h4);
+    return pk*h1 + pk1*h2 + dpk*h3 + dpk1*h4;
 
 }
 
@@ -67,16 +64,17 @@ void splineDrive(int goalX, int goalY, int alpha){
     
 
     for (float u = 0.0; u <= 1.0; u+=INTERVAL){
-        
-
+        int modifx = bx/abs(bx);
+        int modify = by/abs(by);
         sx = P(u, ax, bx, Dax, Dbx);
         sy = P(u, ay, by, Day, Dby);
 
 
         //printf("h1 = %f, h2 = %f, h3 = %f, h4 = %f, sx = %f, sy = %f\n", h1, h2, h3, h4, sx, sy);
         
-        double yDif = sy-lasty;
-        double xDif = sx-lastx;
+        double yDif = modifx*(sy-lasty);
+        double xDif = modify*(sx-lastx);
+        
         sphi = round(atan2(yDif, xDif)*180/M_PI);
         VWCurve(len*INTERVAL, sphi-currentAngle, SPEED);
         VWWait();
