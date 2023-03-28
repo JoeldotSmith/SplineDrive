@@ -48,10 +48,10 @@ void splineDrive(int goalX, int goalY, int alpha){
     //Calculate length to position
     
     len = sqrt(goalX*goalX+goalY*goalY);
-    Dax = len * cos(currentAngle);
-    Day = len * sin(currentAngle);
-    Dbx = len * cos(alpha);
-    Dby = len * sin(alpha);
+    Dax = len * cos(radians(currentAngle));
+    Day = len * sin(radians(currentAngle));
+    Dbx = len * cos(radians(alpha));
+    Dby = len * sin(radians(alpha));
     ax = 0;
     ay = 0;
     bx = goalX;
